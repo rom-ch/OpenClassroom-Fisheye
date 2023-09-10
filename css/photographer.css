@@ -209,13 +209,17 @@ button {
 
 .modal header {
 	justify-content: space-between;
+	align-items: flex-start	;
 	width: 100%;
 	height: auto;
 }
 
-.modal header img {
+.modal header a {
 	cursor: pointer;
-	align-self: flex-start;
+	}
+
+.modal header a:focus {
+	border: 2px solid black;
 }
 
 .modal header h2 {

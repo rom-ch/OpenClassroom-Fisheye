@@ -53,6 +53,10 @@ header a {
 	height: 50px;
 }
 
+.logo:focus {
+	border: 2px solid black;
+}
+
 .photographer_section {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;

@@ -26,7 +26,9 @@ export default class HTMLComponents {
           <span>Contactez-moi</span>
           <span>${name}</span>
         </h2>
-        <img class="close__modal" src="assets/icons/close.svg" />
+        <a class="close__modal">
+          <img src="assets/icons/close.svg" aria-label="Close modal" />
+        </a>
       </header>
 
       <form id="form">
