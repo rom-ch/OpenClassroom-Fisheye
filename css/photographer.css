@@ -45,6 +45,12 @@ button {
 	cursor: pointer;
 }
 
+.contact__button:focus,
+.contact__button:active {
+	background-color: var(--bg-secondary);
+	color: black
+}
+
 .contact__img {
 	width: 200px;
 	height: 200px;
@@ -81,6 +87,12 @@ button {
 	justify-content: space-between;
 	align-items: center;
 	cursor: pointer;
+}
+
+.dropdown-btn:focus,
+.dropdown-btn:active {
+	background-color: var(--bg-secondary);
+	color: black;
 }
 
 .dropdown-btn-icon {

@@ -2,17 +2,17 @@ export default class HTMLComponents {
 	static sortDropdown() {
 		return `
       <div class="dropdown">
-	      <button class="dropdown-btn">
+	      <button class="dropdown-btn" role="button" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="sortBy">
 		      <span class="selected-option" data-option-selected="">
             Trier par :
           </span>
 		      <span class="dropdown-btn-icon"><i class="fa-solid fa-chevron-up"></i>
           </span>
 	      </button>
-	      <ul class="dropdown-content">
-		      <li><a data-option="Popularité" href="#">Popularité</a></li>
-		      <li><a data-option="Date" href="#">Date</a></li>
-		      <li><a data-option="Titre" href="#">Titre</a></li>
+	      <ul class="dropdown-content" aria-labelledby="sortBy" aria-activedescendant="popularity" aria-selected="true" role="listbox">
+		      <li><a data-option="Popularité" href="#" aria-label="popularity" role="option">Popularité</a></li>
+		      <li><a data-option="Date" href="#" aria-label="date" role="option">Date</a></li>
+		      <li><a data-option="Titre" href="#" aria-label="title" role="option">Titre</a></li>
 	      </ul>
       </div>
     `;

@@ -101,16 +101,16 @@ header a {
 
 .location {
 	color: var(--clr-secondary);
-	font-size: 13px;
+	font-size: 16px;
 	font-weight: 400;
 }
 
 .tagline {
-    font-size: 10px;
+    font-size: 13px;
     margin-block: .5rem;
 }
 
 .price {
     color: var(--clr-grey);
-    font-size: 9px;
+    font-size: 12px;
 }
