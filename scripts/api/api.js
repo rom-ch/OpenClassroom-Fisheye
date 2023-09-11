@@ -21,7 +21,7 @@ export default class Api {
 	static async getPhotographersById(id) {
 		const photographers = await this.getPhographers();
 		const photographerById = photographers.find(
-			photographer => photographer.id == id
+			photographer => photographer.id === Number(id)
 		);
 		return photographerById;
 	}
@@ -34,7 +34,7 @@ export default class Api {
 	static async getMediasByPhotographer(id) {
 		const medias = await this.getAllMedias();
 		const mediasByPhotographer = medias.filter(
-			media => media.photographerId == id
+			media => media.photographerId === Number(id)
 		);
 		return mediasByPhotographer;
 	}

@@ -51,7 +51,7 @@ export default class Lightbox {
 			const caption = document.createElement("p");
 			caption.innerHTML = link.parentElement.dataset.title;
 
-			if (link.firstElementChild.tagName == "IMG") {
+			if (link.firstElementChild.tagName === "IMG") {
 				const img = document.createElement("img");
 				img.src = link.firstElementChild.src;
 				img.alt = link.parentElement.dataset.title;
@@ -67,7 +67,7 @@ export default class Lightbox {
 			li.appendChild(caption);
 			lightboxUl.appendChild(li);
 
-			link.addEventListener("click", e => {
+			link.addEventListener("click", () => {
 				li.setAttribute("data-active", "");
 				this.openLightbox();
 			});

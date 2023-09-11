@@ -1,5 +1,5 @@
 export default class Likes {
-	static getTotalLikes(medias) {
+	static getTotalLikes() {
 		const insertLikes = document.querySelector(".insert__likes");
 		const tests = document.querySelectorAll("[data-likes]");
 		let totalLikesList = [];
