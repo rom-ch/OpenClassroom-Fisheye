@@ -6,7 +6,7 @@ export default class MediaTemplate {
 	mediaCard() {
 		return `
       <article class="media" data-user-like="false" data-likes="${this._media.likes}" data-title="${this._media.title}" data-date="${this._media.date}">
-        <a href="#" class="media__link" aria-label="${this._media.title}, closeup view">
+        <a href="${this._media.contentLink}" class="media__link" aria-label="${this._media.title}, closeup view">
           ${this._media.mediaType}
         </a>
         <div class="media__caption">
@@ -19,3 +19,5 @@ export default class MediaTemplate {
     `;
 	}
 }
+
+// mediaContent

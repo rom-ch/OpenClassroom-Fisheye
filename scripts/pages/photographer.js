@@ -6,6 +6,7 @@ import HTMLComponents from "../templates/HTMLComponents.js";
 import ContactForm from "../utils/contactForm.js";
 import Likes from "../utils/likes.js";
 import SortMedias from "../utils/sort.js";
+// import Lightbox from "../utils/lightbox_v1.js";
 import Lightbox from "../utils/lightbox.js";
 
 class Profile {
@@ -39,12 +40,6 @@ class Profile {
 		const contactForm = new ContactForm(formModal);
 		contactForm.init();
 
-		// Lightbox
-		lightboxSection.insertAdjacentHTML(
-			"beforeend",
-			HTMLComponents.lightbox()
-		);
-
 		// Medias
 		medias.map(media => {
 			const mediaTemplate = new MediaFactory(media);
@@ -68,8 +63,7 @@ class Profile {
 		]);
 		sortMedias.init();
 
-		const lightbox = new Lightbox();
-		lightbox.init();
+		Lightbox.init();
 	}
 }
 

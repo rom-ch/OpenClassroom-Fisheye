@@ -6,6 +6,10 @@ export default class VideoModel extends MediaModel {
 		this._video = media.video;
 	}
 
+	get contentLink() {
+		return `assets/medias/${this._video}`;
+	}
+
 	get mediaType() {
 		return `
         <video class="video">

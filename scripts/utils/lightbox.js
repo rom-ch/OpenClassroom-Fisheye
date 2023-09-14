@@ -1,88 +1,101 @@
 export default class Lightbox {
-	constructor() {
-		this._lightbox = document.querySelector(".lightbox");
-		this._body = document.querySelector("body");
-	}
-
-	openLightbox() {
-		this._lightbox.style.display = "block";
-		this._body.style.overflow = "hidden";
-		window.scrollTo(0, 0);
-	}
-
-	closeLightbox() {
-		this._lightbox.style.display = "none";
-		this._body.style.overflow = "auto";
-	}
-
-	lightboxNav() {}
-
-	init() {
-		const mediaLink = document.querySelectorAll(".media__link");
-		const closeBtn = document.querySelector(".close-lightbox");
-		const lightboxUl = document.querySelector("[data-slides]");
-		const lightboxNavBtn = document.querySelectorAll(
-			"[data-lightbox-button]"
+	static init() {
+		const links = Array.from(
+			document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
 		);
 
-		lightboxNavBtn.forEach(btn => {
-			btn.addEventListener("click", () => {
-				const offset = btn.dataset.lightboxButton === "next" ? 1 : -1;
-				const slides = btn
-					.closest("[data-lightbox]")
-					.querySelector("[data-slides]");
+		const gallery = links.map(link => link.getAttribute("href"));
 
-				const activeSlide = slides.querySelector("[data-active]");
-				let newIndex =
-					[...slides.children].indexOf(activeSlide) + offset;
+		links.forEach(link =>
+			link.addEventListener("click", e => {
+				e.preventDefault();
+				document.body.style.overflow = "hidden";
+				new Lightbox(e.currentTarget.getAttribute("href"), gallery);
+			})
+		);
+	}
 
-				if (newIndex < 0) newIndex = slides.children.length - 1;
-				if (newIndex >= slides.children.length) newIndex = 0;
+	constructor(url, gallery) {
+		this.element = this.buildDOM();
+		this.gallery = gallery;
+		this.loadContent(url);
+		this.onKeyUp = this.onKeyUp.bind(this);
+		document.body.appendChild(this.element);
+		document.addEventListener("keyup", this.onKeyUp);
+	}
 
-				slides.children[newIndex].dataset.active = true;
-				delete activeSlide.dataset.active;
-			});
-		});
+	onKeyUp(e) {
+		if (e.key === "Escape") this.close(e);
+		if (e.key === "ArrowRight") this.next(e);
+		if (e.key === "ArrowLeft") this.prev(e);
+	}
 
-		mediaLink.forEach(link => {
-			const li = document.createElement("li");
-			li.className = "slide";
-			li.setAttribute("aria-label", "image closeup view");
-			const caption = document.createElement("p");
-			caption.innerHTML = link.parentElement.dataset.title;
+	close(e) {
+		e.preventDefault();
+		this.element.classList.add("fadeout");
+		window.setTimeout(() => {
+			this.element.remove();
+			window.removeEventListener("keyup", this.onKeyUp);
+		}, 500);
+    document.body.style.overflow = "auto";
+	}
 
-			if (link.firstElementChild.tagName === "IMG") {
-				const img = document.createElement("img");
-				img.src = link.firstElementChild.src;
-				img.alt = link.parentElement.dataset.title;
-				li.appendChild(img);
-			} else {
-				const video = document.createElement("video");
-				video.setAttribute("controls", "");
-				const source = document.createElement("source");
-				source.src = link.firstElementChild.firstElementChild.src;
-				video.appendChild(source);
-				li.appendChild(video);
-			}
-			li.appendChild(caption);
-			lightboxUl.appendChild(li);
+	next(e) {
+		e.preventDefault();
+		let i = this.gallery.findIndex(i => i === this.url);
+		if (i === this.gallery.length - 1) {
+			i = -1;
+		}
+		this.loadContent(this.gallery[i + 1]);
+	}
 
-			link.addEventListener("click", () => {
-				li.setAttribute("data-active", "");
-				this.openLightbox();
-			});
-		});
+	prev(e) {
+		e.preventDefault();
+		let i = this.gallery.findIndex(i => i === this.url);
+		if (i === 0) {
+			i = this.gallery.length;
+		}
+		this.loadContent(this.gallery[i - 1]);
+	}
 
-		closeBtn.addEventListener("click", () => {
-			delete document.querySelector("[data-active]").dataset.active;
-			this.closeLightbox();
-		});
+	loadContent(url) {
+		this.url = null;
+		const container = this.element.querySelector(".lightbox__container");
+		container.innerHTML = "";
+		let content;
+		if (url.includes(".jpg")) {
+			content = new Image();
+		} else if (url.includes(".mp4")) {
+			content = document.createElement("video");
+			content.controls = true;
+		}
+		container.appendChild(content);
+		this.url = url;
+		content.src = url;
+	}
 
-		document.addEventListener("keydown", e => {
-			if (e.key === "Escape") {
-				delete document.querySelector("[data-active]").dataset.active;
-				this.closeLightbox();
-			}
-		});
+	buildDOM() {
+		const dom = document.createElement("div");
+		dom.classList.add("lightbox");
+		dom.innerHTML = `
+    <button type="button" class="lightbox__close">Close</button>
+    <button type="button" class="lightbox__next">Close</button>
+    <button type="button" class="lightbox__prev">Close</button>
+    <div class="lightbox__container"></div>
+    `;
+		dom.querySelector(".lightbox__close").addEventListener(
+			"click",
+			this.close.bind(this)
+		);
+		dom.querySelector(".lightbox__next").addEventListener(
+			"click",
+			this.next.bind(this)
+		);
+		dom.querySelector(".lightbox__prev").addEventListener(
+			"click",
+			this.prev.bind(this)
+		);
+
+		return dom;
 	}
 }

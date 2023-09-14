@@ -47,5 +47,9 @@ export default class ContactForm {
 			e.preventDefault();
 			this.formValidation();
 		});
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') this.closeModal();
+		})
 	}
 }
