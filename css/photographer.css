@@ -277,99 +277,15 @@ textarea {
 	font-size: 24px;
 }
 
-/* lightbox */
-
-/* .lightbox {
-	position: absolute;
-	display: none;
-	inset: 0;
-	height: 100vh;
-	margin: 0 auto;
-	background-color: white;
-	
-}
-
-.lightbox > ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.slide {
-	position: absolute;
-	inset: 5%;
-	opacity: 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-.slide p {
-	margin-top: .5rem;
-	font-size: 24px;
-	color: var(--clr-secondary);
-}
-
-.slide[data-active] {
-	opacity: 1;
-	z-index: 1;
-}
-
-.slide > img,
-.slide > video {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
-}
-
-
-
-.lightbox-button {
-	position: absolute;
-	z-index: 2;
-	background: none;
-	border: none;
-	font-size: 3rem;
-	color: #901c1c;
-	cursor: pointer;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.close-lightbox {
-	top: 5%;
-	right: 1rem;
-}
-
-.prev,
-.next {
-	top: 50%;
-	transform: translateY(-50%);
-}
-
-.lightbox-button.prev {
-	left: 1rem;
-}
-
-.lightbox-button.next {
-	right: 1rem;
-} */
-
+/* Lightbox */
 .lightbox {
 	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+	inset: 0;
 	background-color: white;
 	z-index: 10;
-	/* overflow: auto; */
 	animation: lightboxIn 0.5s;
 	transition: opacity 0.3s;
+	height: 100vh;
 }
 
 .lightbox.fadeout {
@@ -378,7 +294,10 @@ textarea {
 
 .lightbox__close {
 	border: none;
-	background: url("/assets/icons/lightboxClose.svg") center center / 100% 100%
+	background-color: var(--bg-primary);
+	-webkit-mask: url("/assets/icons/lightboxClose.svg") center center / 100%
+		100% no-repeat;
+	mask: url("/assets/icons/lightboxClose.svg") center center / 100% 100%
 		no-repeat;
 	width: 42px;
 	height: 42px;
@@ -393,8 +312,10 @@ textarea {
 .lightbox__next,
 .lightbox__prev {
 	border: none;
-	background: url("/assets/icons/arrow.svg") center center / 30px 48px
+	background-color: var(--bg-primary);
+	-webkit-mask: url("/assets/icons/arrow.svg") center center / 30px 48px
 		no-repeat;
+	mask: url("/assets/icons/arrow.svg") center center / 30px 48px no-repeat;
 	width: 50px;
 	height: 100%;
 	position: fixed;
@@ -406,6 +327,15 @@ textarea {
 	cursor: pointer;
 }
 
+.lightbox__next:hover,
+.lightbox__prev:hover,
+.lightbox__close:hover,
+.lightbox__next:focus,
+.lightbox__prev:focus,
+.lightbox__close:focus {
+	background-color: var(--bg-secondary);
+}
+
 .lightbox__prev {
 	right: auto;
 	left: 0;
@@ -415,21 +345,21 @@ textarea {
 .lightbox__container {
 	margin-inline: 50px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: 100%;
 }
 
 .lightbox__container img,
 .lightbox__container video {
-	object-fit: cover;
-	height: 100%;
+	object-fit: contain;
+	height: calc(100% - 48px);
 }
 
-.lightbox__loader {
-	background: url("/assets/icons/loader.svg") center center no-repeat;
-	width: 38px;
-	height: 38px;
+.lightbox__title {
+	font-size: 24px;
+	color: var(--clr-secondary);
 }
 
 @keyframes lightboxIn {

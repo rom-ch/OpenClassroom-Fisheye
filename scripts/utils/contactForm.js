@@ -5,6 +5,7 @@ export default class ContactForm {
 
 	displayModal() {
 		this.modal.style.display = "block";
+		document.querySelector('#fname').focus();
 	}
 
 	closeModal() {

@@ -61,19 +61,4 @@ export default class HTMLComponents {
     </div>
     `;
 	}
-
-	static lightbox() {
-		return `
-      <button class="lightbox-button close-lightbox" id="close-lightbox" aria-label="Close dialog">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <button class="lightbox-button prev" data-lightbox-button="prev" aria-label="Previous image">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <button class="lightbox-button next" data-lightbox-button="next" aria-label="Next image">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-      <ul data-slides></ul>
-    `;
-	}
 }

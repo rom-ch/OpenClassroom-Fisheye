@@ -6,7 +6,6 @@ import HTMLComponents from "../templates/HTMLComponents.js";
 import ContactForm from "../utils/contactForm.js";
 import Likes from "../utils/likes.js";
 import SortMedias from "../utils/sort.js";
-// import Lightbox from "../utils/lightbox_v1.js";
 import Lightbox from "../utils/lightbox.js";
 
 class Profile {
@@ -14,7 +13,6 @@ class Profile {
 		const headerSection = document.querySelector(".photograph-header");
 		const mediaSection = document.querySelector(".medias-section");
 		const mainSection = document.querySelector("main");
-		const lightboxSection = document.querySelector(".lightbox");
 		const contactFormSection = document.querySelector("#contact_modal");
 		const formModal = document.querySelector("#contact_modal");
 
