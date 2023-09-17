@@ -149,6 +149,10 @@ button {
 	overflow: hidden;
 }
 
+.media__link:focus {
+	outline-color: var(--bg-primary);
+}
+
 .image,
 .video {
 	width: 100%;
