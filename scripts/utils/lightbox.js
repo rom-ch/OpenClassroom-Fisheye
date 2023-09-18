@@ -97,9 +97,21 @@ export default class Lightbox {
 		const dom = document.createElement("div");
 		dom.classList.add("lightbox");
 		dom.innerHTML = `
-    <button type="button" class="lightbox__close" aria-label="Close Dialog">Close</button>
-    <button type="button" class="lightbox__prev" aria-label="Previous image">Précédent</button>
-    <button type="button" class="lightbox__next" aria-label="Next image">Suivant</button>
+    <button type="button" class="lightbox__close" aria-label="Close Dialog">
+			<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="white"/>
+			</svg>
+		</button>
+    <button type="button" class="lightbox__prev" aria-label="Previous image">
+			<svg width="30" height="48" viewBox="0 0 30 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M0.360108 5.64L18.6801 24L0.360107 42.36L6.00011 48L30.0001 24L6.00011 3.88195e-06L0.360108 5.64Z" fill="#911C1C"/>
+			</svg>
+		</button>
+    <button type="button" class="lightbox__next" aria-label="Next image">
+			<svg width="30" height="48" viewBox="0 0 30 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M0.360108 5.64L18.6801 24L0.360107 42.36L6.00011 48L30.0001 24L6.00011 3.88195e-06L0.360108 5.64Z" fill="#911C1C"/>
+			</svg>
+		</button>
     <div class="lightbox__container"></div>
     `;
 		dom.querySelector(".lightbox__close").addEventListener(
