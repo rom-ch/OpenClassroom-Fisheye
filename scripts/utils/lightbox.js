@@ -85,6 +85,7 @@ export default class Lightbox {
 		container.appendChild(content);
 		this.url = url;
 		content.src = url;
+		content.setAttribute("aria-label", title);
 
 		const p = document.createElement("p");
 		p.classList.add("lightbox__title");
@@ -96,9 +97,9 @@ export default class Lightbox {
 		const dom = document.createElement("div");
 		dom.classList.add("lightbox");
 		dom.innerHTML = `
-    <button type="button" class="lightbox__close">Close</button>
-    <button type="button" class="lightbox__prev">Close</button>
-    <button type="button" class="lightbox__next">Close</button>
+    <button type="button" class="lightbox__close" aria-label="Close Dialog">Close</button>
+    <button type="button" class="lightbox__prev" aria-label="Previous image">Précédent</button>
+    <button type="button" class="lightbox__next" aria-label="Next image">Suivant</button>
     <div class="lightbox__container"></div>
     `;
 		dom.querySelector(".lightbox__close").addEventListener(
