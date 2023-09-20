@@ -2,20 +2,20 @@ export default class SortMedias {
 	constructor(sortList) {
 		this._dropdownContent = document.querySelector(".dropdown-content");
 		this._dropdownBtnIcon = document.querySelector(".dropdown-btn-icon");
-		this._dropdownBtn = document.querySelector('.dropdown-btn');
+		this._dropdownBtn = document.querySelector(".dropdown-btn");
 		this._sortList = sortList;
 	}
 
 	openDropdown() {
 		this._dropdownContent.style.visibility = "visible";
 		this._dropdownBtnIcon.style.rotate = "180deg";
-		this._dropdownBtn.setAttribute('aria-expanded', true);
+		this._dropdownBtn.setAttribute("aria-expanded", true);
 	}
 
 	closeDropdown() {
 		this._dropdownContent.style.visibility = "hidden";
 		this._dropdownBtnIcon.style.rotate = "0deg";
-		this._dropdownBtn.setAttribute('aria-expanded', false);
+		this._dropdownBtn.setAttribute("aria-expanded", false);
 	}
 
 	sortBy(sortValue) {
@@ -69,7 +69,12 @@ export default class SortMedias {
 				selectedOption.dataset.optionSelected = option.dataset.option;
 				selectedOption.innerText =
 					selectedOption.dataset.optionSelected;
-				document.querySelector('.dropdown-content').setAttribute('aria-activedescendant', option.dataset.option)
+				document
+					.querySelector(".dropdown-content")
+					.setAttribute(
+						"aria-activedescendant",
+						option.dataset.option
+					);
 				this.sortBy(selectedOption.innerText);
 				this.closeDropdown();
 				open = false;

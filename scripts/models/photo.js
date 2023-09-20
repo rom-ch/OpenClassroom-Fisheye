@@ -10,7 +10,7 @@ export default class PhotoModel extends MediaModel {
 		return `assets/medias/${this._image}`;
 	}
 
-	get mediaType() {
+	get getMediaContent() {
 		return `
             <img class="image" src="assets/medias/${this._image}" alt="${this.title}">
       `;

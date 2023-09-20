@@ -10,7 +10,7 @@ export default class VideoModel extends MediaModel {
 		return `assets/medias/${this._video}`;
 	}
 
-	get mediaType() {
+	get getMediaContent() {
 		return `
         <video class="video">
             <source src="assets/medias/${this._video}" type="video/mp4">

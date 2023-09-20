@@ -81,6 +81,17 @@ export default class Lightbox {
 		} else if (url.includes(".mp4")) {
 			content = document.createElement("video");
 			content.controls = true;
+
+			let play = false;
+			document.addEventListener("keyup", e => {
+				if (e.key === " " && play === false) {
+					content.play();
+					play = !play;
+				} else {
+					content.pause();
+					play = !play;
+				}
+			});
 		}
 		container.appendChild(content);
 		this.url = url;

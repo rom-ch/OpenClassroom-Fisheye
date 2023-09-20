@@ -60,7 +60,6 @@ class Profile {
 			...document.querySelectorAll(".media"),
 		]);
 		sortMedias.init();
-
 		Lightbox.init();
 	}
 }
