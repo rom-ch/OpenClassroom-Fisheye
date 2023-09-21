@@ -314,6 +314,12 @@ textarea {
 	fill: var(--bg-primary);
 }
 
+.lightbox__close:hover svg path,
+.lightbox__next:hover svg path,
+.lightbox__prev:hover svg path {
+	fill: var(--bg-secondary);
+}
+
 .lightbox__close:active svg path,
 .lightbox__next:active svg path,
 .lightbox__prev:active svg path {
