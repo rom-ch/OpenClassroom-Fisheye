@@ -6,18 +6,21 @@ export default class SortMedias {
 		this._sortList = sortList;
 	}
 
+	// methode ouvrir le dropdown
 	openDropdown() {
 		this._dropdownContent.style.visibility = "visible";
 		this._dropdownBtnIcon.style.rotate = "180deg";
 		this._dropdownBtn.setAttribute("aria-expanded", true);
 	}
 
+	// methode fermer le dropdown
 	closeDropdown() {
 		this._dropdownContent.style.visibility = "hidden";
 		this._dropdownBtnIcon.style.rotate = "0deg";
 		this._dropdownBtn.setAttribute("aria-expanded", false);
 	}
 
+	// methode trier les medias
 	sortBy(sortValue) {
 		switch (sortValue) {
 			case "Popularité":
