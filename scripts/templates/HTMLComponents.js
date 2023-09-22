@@ -27,7 +27,7 @@ export default class HTMLComponents {
           <span>${name}</span>
         </h2>
         <a href="#" class="close__modal">
-          <img src="assets/icons/close.svg" aria-label="Close modal" />
+          <img src="assets/icons/close.svg" alt="Close modal" aria-label="Close modal" />
         </a>
       </header>
 
@@ -41,7 +41,7 @@ export default class HTMLComponents {
           <input type="text" id="lname" />
         </div>
         <div>
-          <label for="fname">Email</label>
+          <label for="email">Email</label>
           <input type="email" id="email" />
         </div>
         <div>

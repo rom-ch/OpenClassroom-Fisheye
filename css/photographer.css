@@ -177,7 +177,7 @@ button {
 }
 
 .media__like-number {
-	color: black;
+	color: var(--clr-secondary);
 	margin-left: auto;
 	margin-right: 0.3rem;
 }

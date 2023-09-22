@@ -12,7 +12,7 @@ export default class MediaTemplate {
         <div class="media__caption">
           <span class="media__title">${this._media.title}</span>
           <span class="media__like-number">${this._media.likes}</span>
-          <span class="media__like-icon" aria-label="likes"><i class="fa-solid fa-heart"></i></span>
+          <span tabindex="0" class="media__like-icon" aria-label="likes"><i class="fa-solid fa-heart"></i></span>
         </div>
       </article>
     
